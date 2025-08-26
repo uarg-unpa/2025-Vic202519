@@ -26,3 +26,4 @@ public class EjemploScanner_01 {
         scanner.close();
     }
 }
+/*hola */
