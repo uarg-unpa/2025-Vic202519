@@ -1,4 +1,4 @@
-public class Pila {
+public class Pila_A1 {
     private int maxPila = 10;
     private int cima = -1;
     private int cont = 0;
