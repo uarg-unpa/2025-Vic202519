@@ -36,6 +36,8 @@ public class PilaNiveles{
         return cima;
     }
     //metodo para ver cuantas veces aparece un num en una pila
+
+    //corregir metodo
     public int aparicionPila(int num){
         int cont=0;
         for(int i=0;i<cima;i++){
