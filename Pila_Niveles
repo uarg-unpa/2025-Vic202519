@@ -39,10 +39,15 @@ public class PilaNiveles{
 
     //corregir metodo
     public int aparicionPila(int num){
-        int cont=0;
+        PilaNiveles PA=new PilaNiveles();
+        int cont=0, aux;
+        aux=PA.sacar();
         for(int i=0;i<cima;i++){
-            if(elementos1[i]==num){
+            if(aux==num){
                 cont++;
+            }
+            else{
+                PA.meter();
             }
         }
         return cont;
