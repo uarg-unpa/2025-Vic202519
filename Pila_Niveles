@@ -41,14 +41,18 @@ public class PilaNiveles{
     public int aparicionPila(int num){
         PilaNiveles PA=new PilaNiveles();
         int cont=0, aux;
-        aux=PA.sacar();
-        for(int i=0;i<cima;i++){
+        aux=this.sacar();
+        for(int i=0;i<=cima;i++){
             if(aux==num){
                 cont++;
+                PA.meter(aux);
             }
             else{
-                PA.meter();
+                PA.meter(aux);
             }
+        }
+        for(int j=0;j<=cima;j++){
+            this.meter(PA.sacar());
         }
         return cont;
     }
