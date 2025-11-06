@@ -1,19 +1,14 @@
 import java.util.Scanner;
-public class PilaNiveles{
-    /*Implementar una pila de enteros que almacene niveles de energia y un metodo que cuente
-    cuantas veces aparece un valor X, sin modificar la pila*/
-
-    //El programa debe permitir:
-    //agregar nuevos niveles a la pila
-    //mostrar el nivel que se enceuntra en la cima de la pila
-    //pedir al usuario un valor X y contar cuantas veces aparece en la pila
-
+public class PilaEnteros{
+    //tengo que hacer una pila de enteros, donde los numeros menores al valor ingresado por el usuario, se eliminen
+    //dejando solo los valores mayores o iguales al numero ingresado por el usuario, ademas de contar la cantidad de numeros eliminados
+    //y acomodar los numeros que quedaron en orden de menor a mayor
     private final int maxpila=10;
-    private int [] elementos1;
+    private int [] elemento;
     private int cima;
 
-    public PilaNiveles(){
-        elementos1=new int[maxpila];
+    public PilaEnteros(){
+        elemento=new int[maxpila];
         cima=-1;
     }
     public boolean estaVacia(){
@@ -24,39 +19,36 @@ public class PilaNiveles{
     }
     public void meter(int e){
         cima=cima+1;
-        elementos1[cima]=e;
+        elemento[cima]=e;
     }
     public int sacar(){
-        int aux=elementos1[cima];
+        int aux=elemento[cima];
         cima=cima-1;
         return aux;
     }
-    //metodo para ver el nivel actual (va de 0 a 9)
-    public int devolverCima(){
-        return cima;
-    }
-    //metodo para ver cuantas veces aparece un num en una pila
-    public int aparicionPila(int num){
-        PilaNiveles auxPila=new PilaNiveles();
-        int cont=0,aux;
+    //metodo para eliminar los numeros menores a un valor dado
+    public int eliminarMenores(int numero1){
+        PilaEnteros auxPila=new PilaEnteros();
+        int cont=0,aux,aux2;
         while (!this.estaVacia()) {
             aux=this.sacar();
-            if (aux==num){
+            if (aux<numero1){
                 cont++;
-                auxPila.meter(aux);
             }
             else{
                 auxPila.meter(aux);
             }
         }
         while (!auxPila.estaVacia()) {
-            this.meter(auxPila.sacar());
+            aux2=auxPila.sacar();
+            if(aux2>=numero1){
+                this.meter(aux2);
+            }
         }
         return cont;
     }
-
     public static void main (String[]args){
-        PilaNiveles P1= new PilaNiveles();
+        PilaNiveles P2= new PilaNiveles();
         Scanner Scanner=new Scanner(System.in);
         int numero, A;
         do{
@@ -66,17 +58,17 @@ public class PilaNiveles{
             System.out.println("--------------------------------");
             System.out.println("2-Borrar enteros de la Pila");
             System.out.println("--------------------------------");
-            System.out.println("3-Nivel Actual");
+            System.out.println("3-Posición Actual");
             System.out.println("--------------------------------");
-            System.out.println("4-Aparición de un valor X ingresado por el usuario");
+            System.out.println("4-Eliminación de un valor y conteo de apariciones");
             A=Scanner.nextInt();
 
             switch (A) {
                 case 1:
                     System.out.println("Ingrese un numero: ");
                     numero=Scanner.nextInt();
-                    if (!P1.estaLlena()){
-                        P1.meter(numero);
+                    if (!P2.estaLlena()){
+                        P2.meter(numero);
                     }
                     else{
                         System.out.println("La cola esta llena");
@@ -85,21 +77,21 @@ public class PilaNiveles{
             
                 case 2:
                     
-                    if(!P1.estaVacia()){
+                    if(!P2.estaVacia()){
                         System.out.println("Se elimino el ultimo elemento insertado en la cola");
-                        P1.sacar();
+                        P2.sacar();
                     }
                     break;
 
                 case 3:
-                    System.out.println("El nivel actual esta en: "+P1.devolverCima());
+                    System.out.println("El nivel actual esta en: "+P2.devolverCima());
                     break;
 
                 case 4:
-                    System.out.print("Ingrese el valor que quiere encontrar: ");
-                    int num1=Scanner.nextInt();
-                    int apariciones=P1.aparicionPila(num1);
-                    System.out.println("El valor: "+num1+" aparecio "+apariciones+" veces ");
+                    System.out.print("Ingrese el valor: ");
+                    int num2=Scanner.nextInt();
+                    int eliminados=P2.eliminarMenores(num2);
+                    System.out.println("Se eliminaron "+eliminados+" elementos menores a "+num2);
                     break;
             }
             //arriba lo que ocurre es que, cuando ingresamos el numero que queremos ver cuantas veces se repite
