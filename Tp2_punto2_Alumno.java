@@ -2,7 +2,7 @@ public class Tp2_punto2_Alumno{
     private String nombre, apellido;
     private int edad, dni;
 
-    public Alumno (String nom,String ape, int eda, int dn){
+    public Tp2_punto2_Alumno(String nom,String ape, int eda, int dn){
         this.nombre=nom;
         this.apellido=ape;
         this.edad=eda;
