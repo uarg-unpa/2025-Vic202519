@@ -110,4 +110,24 @@ public class PilaNiveles{
         while (A!=0);
         Scanner.close();
     }
+    public int eliminar(int num2) {
+        PilaNiveles auxPila=new PilaNiveles();
+        int cont=0,aux,aux2;
+        while (!this.estaVacia()) {
+            aux=this.sacar();
+            if (aux<num2){
+                cont++;
+            }
+            else{
+                auxPila.meter(aux);
+            }
+        }
+        while (!auxPila.estaVacia()) {
+            aux2=auxPila.sacar();
+            if(aux2>=num2){
+                this.meter(aux2);
+            }
+        }
+        return cont;
+    }
 }
