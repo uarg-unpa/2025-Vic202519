@@ -37,11 +37,20 @@ public class PilaNiveles{
     }
     //metodo para ver cuantas veces aparece un num en una pila
     public int aparicionPila(int num){
-        int cont=0;
-        for(int i=0;i<cima;i++){
-            if(elementos1[i]==num){
+        PilaNiveles auxPila=new PilaNiveles();
+        int cont=0,aux;
+        while (!this.estaVacia()) {
+            aux=this.sacar();
+            if (aux==num){
                 cont++;
+                auxPila.meter(aux);
             }
+            else{
+                auxPila.meter(aux);
+            }
+        }
+        while (!auxPila.estaVacia()) {
+            this.meter(auxPila.sacar());
         }
         return cont;
     }
