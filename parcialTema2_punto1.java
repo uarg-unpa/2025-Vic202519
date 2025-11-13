@@ -57,7 +57,9 @@ public class parcialTema2_punto1{
         if (cont1>cont2){
             return true;
         }
-        return false;
+        else{
+            return false;
+        }
     }
     public static void main (String[]args){
         Scanner leer=new Scanner(System.in);

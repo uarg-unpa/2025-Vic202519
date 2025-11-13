@@ -78,7 +78,7 @@ public class parcialTema2_punto2{
             PA2.meter(aux2);
         }
 
-        while(!P1.estaVacia1() && !P2.estaVacia1()){
+        while(!P1.estaVacia1() || !P2.estaVacia1()){
             Q1.insertar(P1.sacar());
             Q1.insertar(P2.sacar());
             P1.meter(PA1.sacar());
