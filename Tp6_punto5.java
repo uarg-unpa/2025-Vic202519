@@ -6,7 +6,8 @@ public class Tp6_punto5{
     public static int sumaRecursiva(int n) {
         if (n == 2) {
             return 2;
-        } else {
+        } 
+        else {
             return n + sumaRecursiva(n - 2);
         }
     }
@@ -14,8 +15,14 @@ public class Tp6_punto5{
         Scanner scanner = new Scanner(System.in);
         System.out.print("Ingrese un numero entero positivo: ");
         int n = scanner.nextInt();
-        int resultado = sumaRecursiva(n);
-        System.out.println("La suma de 1 a " + n + " es: " + resultado);
+        if(n % 2 == 0){
+            int resultado = sumaRecursiva(n);
+            System.out.println("La suma de 2 a " + n + " es: " + resultado);
+        } else {
+            n=n-1;
+            int resultado = sumaRecursiva(n);
+            System.out.println("El numero ingresado no es par. La suma de 2 a " + n + " es: " + resultado);
+        }
         scanner.close();
     }
 }
